@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Country's Flag</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1 onclick="goHome()">🌐 Country's Flag</h1>
+
+    <div class="search-bar">
+      <button id="back-btn" onclick="goHome()" style="display:none; font-size:1.5rem; cursor:pointer; border:none; background:none; user-select:none; margin-right:8px;">←</button>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search for a country..."
+        oninput="searchCountry()"
+        autocomplete="off"
+      />
+    </div>
+
+    <div id="continent-buttons" class="continent-buttons">
+      <button onclick="showCountries('africa')"> Africa</button>
+      <button onclick="showCountries('europe')"> Europe</button>
+      <button onclick="showCountries('asia')"> Asia</button>
+      <button onclick="showCountries('northAmerica')"> North America</button>
+      <button onclick="showCountries('southAmerica')"> South America</button>
+      <button onclick="showCountries('oceania')"> Oceania</button>
+      <button onclick="showCountries('antarctica')"> Antarctica</button>
+    </div>
+
+    <div id="continent-map" class="continent-map"></div>
+    <div id="countries" class="countries-grid"></div>
+
+    <div id="flag-modal" class="modal" onclick="closeModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <img id="modal-flag" src="" alt="Flag" />
+        <img id="modal-map" src="" alt="Country Map" style="display:none" />
+        <button class="close-btn" onclick="closeModal()">Close</button>
+        <p id="modal-caption"></p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

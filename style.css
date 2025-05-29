@@ -1,0 +1,258 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f2f6fa;
+  color: #333;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin: 1rem;
+  cursor: pointer;
+  color: #2c3e50;
+  user-select: none;
+}
+
+.search-bar {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-input {
+  flex-grow: 1;
+  padding: 0.6rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  border: 1.5px solid #ccc;
+  width: 300px;
+  max-width: 25vw;
+  transition: border-color 0.3s;
+}
+
+#search-input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.continent-buttons {
+  margin-bottom: 1rem;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.continent-buttons button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 0.8rem 1rem;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #0c3e5f;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.continent-buttons button:hover {
+  background-color: #2980b9;
+}
+
+.continent-map img {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto 1rem;
+  display: block;
+  border-radius: 10px;
+}
+
+.countries-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 10px 20px 10px;
+}
+
+.country-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  width: 140px;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.country-card:hover {
+  transform: scale(1.05);
+}
+
+.country-card img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.country-card span {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.modal-content img {
+  max-width: 45vw;
+  max-height: 40vh;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#modal-flag {
+  order: 1;
+}
+
+#modal-map {
+  order: 2;
+}
+
+#modal-caption {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #222;
+  margin-top: 10px;
+}
+.close-btn {
+  margin-top: 10px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    max-width: 95vw;
+  }
+  .modal-content img {
+    max-width: 80vw;
+    max-height: 35vh;
+  }
+  .country-card {
+    width: 120px;
+  }
+}
+/* Initial state: invisible and moved down */
+.continent-buttons {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.6s ease forwards;
+  animation-delay: 0.3s; /* delay before animation starts */
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.continent-buttons button {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
+.continent-buttons button:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.continent-buttons button:nth-child(2) {
+  animation-delay: 0.45s;
+}
+.continent-buttons button:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.continent-buttons button:nth-child(4) {
+  animation-delay: 0.75s;
+}
+.continent-buttons button:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.continent-buttons button:nth-child(6) {
+  animation-delay: 1.05s;
+}
+.continent-buttons button:nth-child(7) {
+  animation-delay: 1.2s;
+}
+
+/* Title and Search Bar initial hidden and moved up */
+h1, .search-bar {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeSlideDown 0.6s ease forwards;
+}
+
+/* Stagger delay: title first, then search bar */
+h1 {
+  animation-delay: 0.2s;
+}
+
+.search-bar {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeSlideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
